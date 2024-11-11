@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HotelApp.View.ContratarHosp"
+             Title="ContratarHosp"
+             NavigationPage.HasNavigationBar="False"
+             >
+    
+    <ContentPage.Resources>
+        <Style x:Key="AdaptBack" TargetType="Frame">
+            <Setter Property="BackgroundColor" Value="{ AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray600}}" />
+            <Setter Property="BorderColor" Value="{ AppThemeBinding  Light={StaticResource Gray600},  Dark={StaticResource Gray400} }" />
+        </Style>
+        <Style x:Key="AdaptFont" TargetType="Label">
+            <Setter Property="TextColor" Value="{ AppThemeBinding Light={StaticResource Primary}, Dark=#EDB3FF }" />
+        </Style>
+    </ContentPage.Resources>
+    
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,1" EndPoint="1,0" >
+            <GradientStop Color="CadetBlue" Offset="0.3" />
+            <GradientStop Color="DarkSlateGray" Offset="1.1" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <VerticalStackLayout VerticalOptions="CenterAndExpand"
+                         Padding="10">
+
+        <Frame Padding="10"
+               Style="{StaticResource AdaptBack}" >
+            <VerticalStackLayout Padding="5" Margin="0">
+
+                <VerticalStackLayout Padding="10" Margin="0">
+
+                    <Label
+                        Text="Cálculo da Diária"
+                        HorizontalOptions="Center"
+                        FontFamily="Kalam"
+                        FontSize="40"
+                        Style="{StaticResource AdaptFont}"
+                    />
+
+                    <Grid RowDefinitions="Auto, Auto"
+                          ColumnDefinitions="*, *, 2*" >
+
+                        <Label Grid.Row="0"
+                           Grid.Column="0"
+                           Text="Adultos:"
+                        />
+
+                        <Label Grid.Row="0"
+                           Grid.Column="1"
+                           Style="{StaticResource AdaptFont}"
+                           Text="{Binding Value}"
+                           BindingContext="{x:Reference StpAdultos}"
+                        />
+
+                        <Stepper Grid.Row="0" Grid.Column="2"
+                             x:Name="StpAdultos"
+                             Minimum="0"
+                             Maximum="10"
+                             Increment="1"
+                        />
+
+                        <Label Grid.Row="1"
+                           Grid.Column="0"
+                           Text="Crianças:"
+                        />
+
+                        <Label Grid.Row="1"
+                           Grid.Column="1"
+                           Style="{StaticResource AdaptFont}"
+                           Text="{Binding Value}"
+                           BindingContext="{x:Reference StpCriancas}"
+                        />
+
+                        <Stepper Grid.Row="1"
+                             Grid.Column="2"
+                             x:Name="StpCriancas"
+                             Minimum="0"
+                             Maximum="10"
+                             Increment="1"
+                        />
+                    </Grid>
+
+                    <Label Text="Escolha sua Suíte" />
+
+                    <Picker x:Name="PickQuarto"
+                        Title="Selecione sua acomodação"
+                        ItemDisplayBinding="{Binding Desc}"
+                    />
+
+                    <Frame Padding="10" Margin="10"
+                           BorderColor="{
+                                AppThemeBinding Light={StaticResource Gray600},
+                                Dark={StaticResource Gray400}
+                           }">
+                        
+                        <VerticalStackLayout>
+
+                            <Label Text="Período da Estadia" />
+
+                            <HorizontalStackLayout>
+                                <Label Text="Check-in" Margin="16"/>
+                                <DatePicker x:Name="DtpkCheckin"
+                                            DateSelected="DtpkCheckin_OnDateSelected"
+                                            Format="dd/MM/yyyy"
+                                />
+                            </HorizontalStackLayout>
+
+                            <HorizontalStackLayout>
+                                <Label Text="Check-Out"  Margin="10"/>
+                                <DatePicker x:Name="DtpkCheckout"
+                                        Format="dd/MM/yyyy"
+                                />
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                    </Frame>
+
+                    <Button Text="Avançar" 
+                            Clicked="Contratar"/>
+
+
+                    <Button Text="Sobre"
+                        Background="Transparent"
+                        HorizontalOptions="Center"
+                        Clicked="AboutEvent"
+                        TextColor="{
+                            AppThemeBinding Light={StaticResource Gray950}, 
+                            Dark={StaticResource Gray200}
+                        }"
+                    />
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+        </Frame>
+    </VerticalStackLayout>
+</ContentPage>

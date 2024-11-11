@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HotelApp.View.HospContratada"
+             NavigationPage.HasNavigationBar="False"
+             Title="HospContratada">
+    
+    <ContentPage.Resources>
+        <Style x:Key="AdaptBack" TargetType="Frame">
+            <Setter Property="BackgroundColor" Value="{ AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray600}}" />
+            <Setter Property="BorderColor" Value="{ AppThemeBinding  Light={StaticResource Gray600},  Dark={StaticResource Gray400}}" />
+        </Style>
+        <Style x:Key="AdaptFont" TargetType="Label">
+            <Setter Property="TextColor" Value="{ AppThemeBinding Light={StaticResource Primary}, Dark=#EDB3FF }" />
+        </Style>
+    </ContentPage.Resources>
+    
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,1" EndPoint="1,0" >
+            <GradientStop Color="CadetBlue" Offset="0.3" />
+            <GradientStop Color="DarkSlateGray" Offset="1.1" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+    
+    <VerticalStackLayout VerticalOptions="CenterAndExpand" >
+        
+        <Frame Margin="10" Style="{StaticResource AdaptBack}" >
+            
+            <VerticalStackLayout>
+
+                <Label
+                    Text="Suíte Super Luxo"
+                    FontFamily="Kalam"
+                    FontSize="40"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource AdaptFont}" 
+                />
+                
+                <HorizontalStackLayout HorizontalOptions="Center">
+                    <Label Text="Adultos" Margin="0, 0, 35, 0" />
+                    <Label Text="2" Style="{StaticResource AdaptFont}" />
+                </HorizontalStackLayout>
+                <HorizontalStackLayout HorizontalOptions="Center">
+                    <Label Text="Crianças" Margin="0, 0, 30, 0" />
+                    <Label Text="1" Style="{StaticResource AdaptFont}" />
+                </HorizontalStackLayout>
+                
+                <!--
+                <Grid RowDefinitions="*, *, *, *" ColumnDefinitions="*, *, *, *" HorizontalOptions="Fill">
+                    <Label Text="Adultos" Grid.Column="1" Grid.Row="1" />
+                    <Label Text="2" Grid.Column="2" Grid.Row="1" Style="{StaticResource AdaptFont}" />
+                    <Label Text="Crianças" Grid.Column="1" Grid.Row="2" />
+                    <Label Text="1" Grid.Column="2" Grid.Row="2" Style="{StaticResource AdaptFont}" />
+                </Grid>-->
+                
+                <Frame Margin="10" Style="{StaticResource AdaptBack}" >
+                    
+                    <Grid ColumnDefinitions="*, *, *" RowDefinitions="Auto, Auto" RowSpacing="8" >
+                        
+                        <!--     Títulos     -->
+                        <Label Grid.Row="0" Grid.Column="0" Text="Check-In:" />
+                        <Label Grid.Row="0" Grid.Column="1" Text="Check-Out:" />
+                        <Label Grid.Row="0" Grid.Column="2" HorizontalOptions="Center" Text="Estadía:" />
+                        
+                        <!--      Datas     -->
+                        <Label Grid.Row="1" Grid.Column="0" Text="27/05/2024" />
+                        <Label Grid.Row="1" Grid.Column="1" Text="30/05/2024" />
+                        <Label Grid.Row="1" Grid.Column="2" Text="3" HorizontalOptions="Center" />
+                    </Grid>
+                </Frame>
+                
+                <Frame Margin="10" BorderColor="{AppThemeBinding 
+                                       Light={StaticResource Gray600}, 
+                                       Dark={StaticResource Gray400} }" >
+                    
+                    <HorizontalStackLayout>
+                        <Label Text="Valor Total:" />
+                        <Label Text="750,00" />
+                    </HorizontalStackLayout>
+                </Frame>
+                
+                <Button Text="Voltar" Clicked="GoBack" />
+                
+            </VerticalStackLayout>
+        </Frame>
+    </VerticalStackLayout>
+</ContentPage>
