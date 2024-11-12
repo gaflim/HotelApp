@@ -5,16 +5,6 @@
              NavigationPage.HasNavigationBar="False"
              Title="HospContratada">
     
-    <ContentPage.Resources>
-        <Style x:Key="AdaptBack" TargetType="Frame">
-            <Setter Property="BackgroundColor" Value="{ AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray600}}" />
-            <Setter Property="BorderColor" Value="{ AppThemeBinding  Light={StaticResource Gray600},  Dark={StaticResource Gray400}}" />
-        </Style>
-        <Style x:Key="AdaptFont" TargetType="Label">
-            <Setter Property="TextColor" Value="{ AppThemeBinding Light={StaticResource Primary}, Dark=#EDB3FF }" />
-        </Style>
-    </ContentPage.Resources>
-    
     <ContentPage.Background>
         <LinearGradientBrush StartPoint="0,1" EndPoint="1,0" >
             <GradientStop Color="CadetBlue" Offset="0.3" />
@@ -29,7 +19,7 @@
             <VerticalStackLayout>
 
                 <Label
-                    Text="Suíte Super Luxo"
+                    Text="{Binding QuartoSelec.Desc}"
                     FontFamily="Kalam"
                     FontSize="40"
                     HorizontalTextAlignment="Center"
@@ -38,20 +28,12 @@
                 
                 <HorizontalStackLayout HorizontalOptions="Center">
                     <Label Text="Adultos" Margin="0, 0, 35, 0" />
-                    <Label Text="2" Style="{StaticResource AdaptFont}" />
+                    <Label Text="{Binding QntAdulto}" Style="{StaticResource AdaptFont}" />
                 </HorizontalStackLayout>
                 <HorizontalStackLayout HorizontalOptions="Center">
                     <Label Text="Crianças" Margin="0, 0, 30, 0" />
-                    <Label Text="1" Style="{StaticResource AdaptFont}" />
+                    <Label Text="{Binding QntCrianca}" Style="{StaticResource AdaptFont}" />
                 </HorizontalStackLayout>
-                
-                <!--
-                <Grid RowDefinitions="*, *, *, *" ColumnDefinitions="*, *, *, *" HorizontalOptions="Fill">
-                    <Label Text="Adultos" Grid.Column="1" Grid.Row="1" />
-                    <Label Text="2" Grid.Column="2" Grid.Row="1" Style="{StaticResource AdaptFont}" />
-                    <Label Text="Crianças" Grid.Column="1" Grid.Row="2" />
-                    <Label Text="1" Grid.Column="2" Grid.Row="2" Style="{StaticResource AdaptFont}" />
-                </Grid>-->
                 
                 <Frame Margin="10" Style="{StaticResource AdaptBack}" >
                     
@@ -63,19 +45,34 @@
                         <Label Grid.Row="0" Grid.Column="2" HorizontalOptions="Center" Text="Estadía:" />
                         
                         <!--      Datas     -->
-                        <Label Grid.Row="1" Grid.Column="0" Text="27/05/2024" />
-                        <Label Grid.Row="1" Grid.Column="1" Text="30/05/2024" />
-                        <Label Grid.Row="1" Grid.Column="2" Text="3" HorizontalOptions="Center" />
+                        <Label Grid.Row="1" Grid.Column="0" Text="{Binding DataCheckIn, StringFormat='{}{0:dd/MM/yyyy}'}"
+                                                            Style="{StaticResource AdaptFont}"
+                                                            />
+                        
+                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding DataCheckOut, StringFormat='{}{0:dd/MM/yyyy}'}" 
+                                                            Style="{StaticResource AdaptFont}"
+                                                            />
+                        
+                        <Label Grid.Row="1" Grid.Column="2" Text="{Binding Estadia}" 
+                                                            HorizontalOptions="Center" 
+                                                            Style="{StaticResource AdaptFont}"
+                                                            />
                     </Grid>
                 </Frame>
+                
+                <Label Text="Valor Total:" 
+                       FontSize="20"
+                       Margin="10, 15, 0, 0"
+                />
                 
                 <Frame Margin="10" BorderColor="{AppThemeBinding 
                                        Light={StaticResource Gray600}, 
                                        Dark={StaticResource Gray400} }" >
                     
                     <HorizontalStackLayout>
-                        <Label Text="Valor Total:" />
-                        <Label Text="750,00" />
+                        <Label Text="{Binding ValorTotal, StringFormat='{}{0:c}'}"
+                               Style="{StaticResource AdaptFont}"
+                               HorizontalOptions="Center"/>
                     </HorizontalStackLayout>
                 </Frame>
                 

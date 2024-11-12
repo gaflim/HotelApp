@@ -1,13 +1,17 @@
+using HotelApp.Models;
+
 namespace HotelApp.View;
 
 public partial class ContratarHosp : ContentPage
 {
+	private App appProperties;
+	
 	// Construtor
 	public ContratarHosp()
 	{
 		InitializeComponent();
 
-		var appProperties = (App)Application.Current!;
+		appProperties = (App)Application.Current!;
 
 		PickQuarto.ItemsSource = appProperties.Quartos;
 
@@ -18,18 +22,25 @@ public partial class ContratarHosp : ContentPage
 		DtpkCheckout.MaximumDate = DtpkCheckin.Date.AddMonths(6);
 	}
 
-	// Redireciona para a página sobre
-    private async void AboutEvent(object? sender, EventArgs e)
-    {
-		await Navigation.PushAsync( new About());
-    }
-
     // Redireciona para a página de confirmação
     private async void Contratar(object? sender, EventArgs e)
     {
 	    try
 	    {
-		    await Navigation.PushAsync(new HospContratada());
+		    Hospedagem h = new Hospedagem()
+		    {
+				QuartoSelec = (Quarto) PickQuarto.SelectedItem,
+				QntAdulto = Convert.ToInt32(StpAdultos.Value),
+				QntCrianca = Convert.ToInt32(StpCriancas.Value),
+				
+				DataCheckIn = DtpkCheckin.Date,
+				DataCheckOut = DtpkCheckout.Date,
+		    };
+		    
+		    await Navigation.PushAsync(new HospContratada()
+		    {
+			    BindingContext = h
+		    });
 	    }
 	    catch (Exception ex)
 	    {
@@ -46,5 +57,12 @@ public partial class ContratarHosp : ContentPage
 	    
 	    DtpkCheckout.MinimumDate = selectedCheckinDate.AddDays(1);
 	    DtpkCheckout.MaximumDate = selectedCheckinDate.AddMonths(6);
+    }
+    
+    
+    // Redireciona para a página sobre
+    private async void AboutEvent(object? sender, EventArgs e)
+    {
+	    await Navigation.PushAsync( new About());
     }
 }

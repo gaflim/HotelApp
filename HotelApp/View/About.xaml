@@ -4,12 +4,6 @@
              x:Class="HotelApp.View.About"
              NavigationPage.HasNavigationBar="False"
              Title="Sobre">
-
-    <ContentPage.Resources>
-        <Style x:Key="AdaptBack" TargetType="Frame">
-            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray600}}"/>
-        </Style>
-    </ContentPage.Resources>
     
     <ContentPage.Background>
         <LinearGradientBrush StartPoint="0,1" EndPoint="1,0" >

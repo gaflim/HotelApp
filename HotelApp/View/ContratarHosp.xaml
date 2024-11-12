@@ -3,18 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HotelApp.View.ContratarHosp"
              Title="ContratarHosp"
-             NavigationPage.HasNavigationBar="False"
-             >
-    
-    <ContentPage.Resources>
-        <Style x:Key="AdaptBack" TargetType="Frame">
-            <Setter Property="BackgroundColor" Value="{ AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray600}}" />
-            <Setter Property="BorderColor" Value="{ AppThemeBinding  Light={StaticResource Gray600},  Dark={StaticResource Gray400} }" />
-        </Style>
-        <Style x:Key="AdaptFont" TargetType="Label">
-            <Setter Property="TextColor" Value="{ AppThemeBinding Light={StaticResource Primary}, Dark=#EDB3FF }" />
-        </Style>
-    </ContentPage.Resources>
+             NavigationPage.HasNavigationBar="False">
     
     <ContentPage.Background>
         <LinearGradientBrush StartPoint="0,1" EndPoint="1,0" >

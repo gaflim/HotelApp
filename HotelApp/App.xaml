@@ -9,6 +9,19 @@
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            
+            <Style TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+            </Style>
+            
+            <Style x:Key="AdaptBack" TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="{ AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray600}}" />
+                <Setter Property="BorderColor" Value="{ AppThemeBinding  Light={StaticResource Gray600},  Dark={StaticResource Gray400}}" />
+            </Style>
+            <Style x:Key="AdaptFont" TargetType="Label">
+                <Setter Property="TextColor" Value="{ AppThemeBinding Light={StaticResource Primary}, Dark=#EDB3FF }" />
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
